@@ -63,3 +63,9 @@ document.querySelectorAll("input[type=radio]").forEach((radio) => {
     });
   });
 });
+
+document.querySelectorAll("a").forEach((e) => {
+  e.addEventListener("click", function (event) {
+    event.preventDefault();
+  });
+});
