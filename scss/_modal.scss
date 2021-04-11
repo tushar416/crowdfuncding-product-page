@@ -1,0 +1,323 @@
+// main modal
+#modal-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  overflow: auto;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .modal {
+    width: 700px;
+    position: relative;
+    margin: 3rem auto 0;
+    padding: 3rem;
+    border-radius: 10px;
+    background: #fff;
+    animation: top 0.4s ease;
+
+    h2 {
+      font-size: 1.8rem;
+    }
+    p {
+      margin: 2rem auto 2.5rem;
+      color: $Darkgray;
+    }
+    .close {
+      position: absolute;
+      right: 4rem;
+      cursor: pointer;
+    }
+    .modal-box {
+      border-radius: 10px;
+
+      margin-bottom: 2rem;
+      border: 1px solid hsl(0, 0%, 93%);
+      transition: all 0.5s ease;
+      .box-content {
+        padding: 2rem;
+        @include flex-center(row);
+
+        .radio-div {
+          display: flex;
+          align-self: flex-start;
+          padding-right: 2rem;
+          .radio {
+            height: 1.5rem;
+            width: 1.5rem;
+            background: #fff;
+            border-radius: 50%;
+            border: 1px solid $Moderatecyan;
+            position: relative;
+
+            &:after {
+              content: "";
+              position: absolute;
+              height: 1rem;
+              width: 1rem;
+              background: $Moderatecyan;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              border-radius: 50%;
+              opacity: 0;
+              @include transition;
+            }
+          }
+        }
+        .top-head {
+          display: flex;
+        }
+
+        .amount {
+          color: $Moderatecyan;
+          font-size: 1rem;
+          font-weight: 400;
+          margin-left: 1rem;
+          @include transition;
+        }
+        label {
+          font-size: 1.1rem;
+          font-weight: 700;
+          cursor: pointer !important;
+          @include transition;
+          &:hover {
+            color: $Moderatecyan;
+          }
+          &:hover + .amount {
+            font-weight: 700;
+          }
+        }
+
+        .quantity {
+          font-weight: 400;
+          color: $Darkgray;
+          margin-left: auto;
+          & span {
+            font-weight: 700;
+            color: #000;
+            font-size: 1.3rem;
+            margin-right: 0.6rem;
+          }
+        }
+
+        p {
+          margin: 1.5rem auto;
+        }
+      }
+      .form-div {
+        border-top: 1px solid hsl(0, 0%, 93%);
+        width: 100%;
+
+        @include flex-center(row);
+        justify-content: space-between;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        p {
+          margin: 2.5rem auto 2.5rem 2.5rem;
+        }
+        .form-holder {
+          span {
+            color: $Darkgray;
+            position: relative;
+            right: -2.3rem;
+          }
+          input {
+            width: 100px;
+            border-radius: 80px;
+            padding: 1.1rem 2.3rem;
+            outline: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 1px solid hsl(0, 0%, 83%);
+          }
+        }
+        .form-inputs {
+          margin-right: 1.5rem;
+          @include flex-center(row);
+        }
+        .btn {
+          outline: none;
+          border: none;
+          cursor: pointer;
+          padding: 1.1rem 1.5rem;
+          font-size: 1.2rem;
+          margin-left: 2rem;
+        }
+      }
+
+      &:last-child {
+        h2 {
+          color: #444;
+        }
+        label {
+          pointer-events: none;
+        }
+        opacity: 0.6;
+      }
+    }
+    input[type="radio"]:checked {
+      & ~ .form-div {
+        max-height: 400px;
+      }
+
+      & + .box-content .top-head label + .amount {
+        font-weight: 700;
+      }
+      & + .box-content .radio-div .radio::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@keyframes top {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@include media(768px) {
+  .modal {
+    width: 90% !important;
+    padding: 3rem 2rem !important;
+    label[for="radio1"] + p {
+      margin-top: 2rem !important;
+      margin-bottom: 0 !important;
+    }
+
+    .radio-div {
+      position: relative;
+      margin-bottom: -1.5rem;
+      display: inline-block !important;
+    }
+    .top-head {
+      display: flex;
+      flex-direction: column;
+    }
+    .radio-div {
+      position: relative;
+      margin-bottom: -1.5rem;
+    }
+
+    .box-content {
+      display: inline-block !important;
+      p {
+        margin: 0 0 2.5rem !important;
+      }
+      label {
+        z-index: 2 !important;
+        margin-left: 3rem !important;
+      }
+    }
+    .quantity {
+      position: relative;
+      transform: translateY(500%);
+      margin-left: 0 !important;
+    }
+    .amount {
+      margin-left: 3rem !important;
+    }
+
+    .form-div {
+      flex-direction: column !important;
+      p {
+        margin: 1.5rem auto 1.2rem !important;
+      }
+      .form-inputs {
+        margin-bottom: 1.3rem;
+      }
+    }
+  }
+}
+@include media(583px) {
+  .modal {
+    padding: 3rem 1rem !important;
+    .close {
+      right: 1rem !important;
+    }
+    .form-inputs {
+      .btn {
+        margin-left: 0.5rem !important;
+      }
+    }
+  }
+  .quantity {
+    transform: translateY(650%) !important;
+  }
+}
+
+@include media(412px) {
+  .quantity {
+    transform: translateY(880%) !important;
+  }
+}
+@keyframes zoom {
+  0% {
+    transform: scale(0.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+// support modal
+#modal-support {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  overflow: auto;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  @include flex-center(row);
+  display: none;
+  .support {
+    width: 550px;
+    animation: zoom 0.3s ease;
+
+    height: auto;
+    padding: 3rem;
+    margin: auto;
+    border-radius: 10px;
+    background: #fff;
+    text-align: center;
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.8rem;
+    }
+    p {
+      margin: 2rem auto 2.3rem;
+      color: $Darkgray;
+    }
+    .btn {
+      width: 150px;
+      margin: auto;
+    }
+  }
+}
+
+@include media(768px) {
+  .support {
+    width: 90% !important;
+    padding: 2rem 2rem 3rem !important;
+
+    h2 {
+      margin-top: 1rem !important;
+      font-size: 1.3rem !important;
+    }
+    p {
+      font-size: 14px;
+      line-height: 25px !important;
+    }
+  }
+}
