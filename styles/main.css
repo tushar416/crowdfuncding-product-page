@@ -33,6 +33,13 @@ header .head a:hover {
 }
 
 @media (max-width: 768px) {
+  header .head {
+    width: 90% !important;
+    padding: 3rem 0 !important;
+  }
+  header .head a.logo {
+    margin-left: 0;
+  }
   header .button-toggle {
     display: block;
   }
@@ -279,18 +286,14 @@ header .head a:hover {
     margin-top: 2rem !important;
     margin-bottom: 0 !important;
   }
-  .modal .radio-div {
-    position: relative;
-    margin-bottom: -1.5rem;
-    display: inline-block !important;
-  }
   .modal .top-head {
     display: flex;
     flex-direction: column;
   }
   .modal .radio-div {
     position: relative;
-    margin-bottom: -1.5rem;
+    margin-bottom: -1.7rem;
+    display: inline-block !important;
   }
   .modal .box-content {
     display: inline-block !important;
@@ -325,6 +328,9 @@ header .head a:hover {
   .modal {
     padding: 3rem 1rem !important;
   }
+  .modal h2 {
+    font-size: 1.5rem !important;
+  }
   .modal .close {
     right: 1rem !important;
   }
@@ -336,9 +342,15 @@ header .head a:hover {
   }
 }
 
-@media (max-width: 412px) {
+@media (max-width: 431px) {
   .quantity {
-    transform: translateY(880%) !important;
+    transform: translateY(810%) !important;
+  }
+}
+
+@media (max-width: 377px) {
+  .quantity {
+    transform: translateY(850%) !important;
   }
 }
 
